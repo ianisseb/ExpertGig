@@ -7,31 +7,15 @@ import {
   FiLinkedin,
   FiTwitter,
 } from "react-icons/fi";
-import FiverrLogo from "./FiverrLogo";
+import SkillLinkLogo from "./SkillLinkLogo";
 import { categories } from "../utils/categories";
 
 function Footer() {
   const socialLinks = [
-    { name: "Github", icon: <FiGithub />, link: "https://www.github.com" },
     {
-      name: "Youtube",
-      icon: <FiYoutube />,
-      link: "https://www.youtube.com/KishanSheth21/",
-    },
-    {
-      name: "LinkedIn",
-      icon: <FiLinkedin />,
-      link: "https://www.linkedin.com/in/koolkishan/",
-    },
-    {
-      name: "Instagram",
-      icon: <FiInstagram />,
-      link: "https://instagram.com/koolkishansheth",
-    },
-    {
-      name: "Twitter",
-      icon: <FiTwitter />,
-      link: "https://twitter.com/koolkishansheth",
+      name: "Github",
+      icon: <FiGithub />,
+      link: "https://github.com/ianisseb/skill_link",
     },
   ];
   const data = [
@@ -116,7 +100,7 @@ function Footer() {
         })}
       </ul>
       <div className="mt-12 flex items-center justify-between">
-        <FiverrLogo fillColor={"#404145"} />
+        <SkillLinkLogo fillColor={"#404145"} />
         <ul className="flex gap-5">
           {socialLinks.map(({ icon, link, name }) => (
             <li

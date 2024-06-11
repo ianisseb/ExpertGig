@@ -1,7 +1,6 @@
 import "../globals.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
@@ -27,7 +26,7 @@ export default function App({ Component, pageProps }) {
     <StateProvider initialState={initialState} reducer={reducer}>
       <Head>
         <link rel="shortcut icon" href="/favicon.ico" />
-        <title>Fiverr Clone</title>
+        <title>Skill Link</title>
       </Head>
       <div className="relative flex flex-col h-screen justify-between">
         <Navbar />
