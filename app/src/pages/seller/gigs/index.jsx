@@ -1,10 +1,14 @@
-import { GET_USER_GIGS_ROUTE } from "../../../utils/constants";
+import {
+  GET_USER_GIGS_ROUTE,
+  DELETE_GIG_ROUTE,
+} from "../../../utils/constants";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function Index() {
   const [gigs, setGigs] = useState([]);
+
   useEffect(() => {
     const getUserGigs = async () => {
       try {
@@ -20,12 +24,24 @@ function Index() {
     };
     getUserGigs();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(DELETE_GIG_ROUTE(id), {
+        withCredentials: true,
+      });
+      setGigs(gigs.filter((gig) => gig.id !== id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="min-h-[80vh] my-10 mt-0 px-32">
-      <h3 className="m-5 text-2xl font-semibold">All your Gigs</h3>
+      <h3 className="m-5 text-2xl  font-semibold">All your Gigs</h3>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left text-gray-900">
+          <thead className="text-xs text-black uppercase bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Name
@@ -50,13 +66,10 @@ function Index() {
           <tbody>
             {gigs.map(({ title, category, price, deliveryTime, id }) => {
               return (
-                <tr
-                  className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
-                  key={id}
-                >
+                <tr className="bg-white hover:bg-gray-100" key={id}>
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                   >
                     {title}
                   </th>
@@ -66,10 +79,18 @@ function Index() {
                   <td className="px-6 py-4 text-right">
                     <Link
                       href={`/seller/gigs/${id}`}
-                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      className="font-medium text-purple-600 hover:underline"
                     >
                       Edit
                     </Link>
+                  </td>
+                  <td className="px-6 py-4 text-right">
+                    <button
+                      onClick={() => handleDelete(id)}
+                      className="font-medium text-red-600 hover:underline"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );

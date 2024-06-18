@@ -14,9 +14,6 @@ function SkillLinkLogo({ fillColor }) {
           Skill Link
         </text>
       </g>
-      <g fill="#1dbf73">
-        <circle cx="185" cy="25" r="10" />
-      </g>
     </svg>
   );
 }

@@ -47,12 +47,8 @@ function Navbar() {
   };
 
   const links = [
-    { linkName: "Fiverr Business", handler: "#", type: "link" },
-    { linkName: "Explore", handler: "#", type: "link" },
-    { linkName: "English", handler: "#", type: "link" },
-    { linkName: "Become a Seller", handler: "#", type: "link" },
     { linkName: "Sign in", handler: handleLogin, type: "button" },
-    { linkName: "Join", handler: handleSignup, type: "button2" },
+    { linkName: "Join", handler: handleSignup, type: "button" },
   ];
 
   useEffect(() => {
@@ -167,7 +163,7 @@ function Navbar() {
         <nav
           className={`w-full px-24 flex justify-between items-center py-6  top-0 z-30 transition-all duration-300 ${
             navFixed || userInfo
-              ? "fixed bg-white border-b border-gray-200"
+              ? "fixed bg-white border-b border-gray-200 shadow-md"
               : "absolute bg-transparent border-transparent"
           }`}
         >
@@ -181,17 +177,17 @@ function Navbar() {
           <div
             className={`flex ${
               navFixed || userInfo ? "opacity-100" : "opacity-0"
-            }`}
+            } transition-opacity duration-500`}
           >
             <input
               type="text"
-              placeholder="What service are you looking for today?"
-              className="w-[30rem] py-2.5 px-4 border"
+              placeholder="What are you looking for?"
+              className="w-[30rem] py-2.5 px-4 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-purple-600"
               value={searchData}
               onChange={(e) => setSearchData(e.target.value)}
             />
             <button
-              className="bg-gray-900 py-1.5 text-white w-16 flex justify-center items-center"
+              className="bg-purple-600 hover:bg-purple-700 py-1.5 text-white w-16 flex justify-center items-center rounded-r-md transition-all duration-300"
               onClick={() => {
                 setSearchData("");
                 router.push(`/search?q=${searchData}`);
@@ -212,16 +208,9 @@ function Navbar() {
                   >
                     {type === "link" && <Link href={handler}>{linkName}</Link>}
                     {type === "button" && (
-                      <button onClick={handler}>{linkName}</button>
-                    )}
-                    {type === "button2" && (
                       <button
                         onClick={handler}
-                        className={`border   text-md font-semibold py-1 px-3 rounded-sm ${
-                          navFixed
-                            ? "border-[#1DBF73] text-[#1DBF73]"
-                            : "border-white text-white"
-                        } hover:bg-[#1DBF73] hover:text-white hover:border-[#1DBF73] transition-all duration-500`}
+                        className="text-purple-600 border border-purple-600 px-4 py-2 rounded-md hover:bg-purple-600 hover:text-white transition-all duration-300"
                       >
                         {linkName}
                       </button>
@@ -234,14 +223,14 @@ function Navbar() {
             <ul className="flex gap-10 items-center">
               {isSeller && (
                 <li
-                  className="cursor-pointer text-[#1DBF73] font-medium"
+                  className="cursor-pointer text-[#bf1d8e] font-medium hover:text-white hover:bg-[#973d9f] hover:scale-105 transition-all duration-200 rounded px-2 py-1"
                   onClick={() => router.push("/seller/gigs/create")}
                 >
                   Create Gig
                 </li>
               )}
               <li
-                className="cursor-pointer text-[#1DBF73] font-medium"
+                className="cursor-pointer text-[#bf1d8e] font-medium hover:text-white hover:bg-[#973d9f] hover:scale-105 transition-all duration-200 rounded px-2 py-1"
                 onClick={handleOrdersNavigate}
               >
                 Orders
@@ -249,14 +238,14 @@ function Navbar() {
 
               {isSeller ? (
                 <li
-                  className="cursor-pointer font-medium"
+                  className="cursor-pointer font-medium hover:text-white hover:bg-gray-700 hover:scale-105 transition-all duration-200 rounded px-2 py-1"
                   onClick={handleModeSwitch}
                 >
                   Switch To Buyer
                 </li>
               ) : (
                 <li
-                  className="cursor-pointer font-medium"
+                  className="cursor-pointer font-medium hover:text-white hover:bg-gray-700 hover:scale-105 transition-all duration-200 rounded px-2 py-1"
                   onClick={handleModeSwitch}
                 >
                   Switch To Seller

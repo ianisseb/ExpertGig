@@ -1,5 +1,5 @@
-import AuthWrapper from "../components/AuthWrapper";
-import HeroBanner from "../components/Landing/HeroBanner";
+import AuthWrapper from "../components/Authentication";
+import HeroBanner from "../components/Landing/Banner";
 import Services from "../components/Landing/Services";
 import { useStateProvider } from "../context/StateContext";
 import React from "react";

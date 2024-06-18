@@ -74,13 +74,13 @@ function Details() {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <div className="max-h-[1000px] max-w-[1000px] overflow-hidden">
+            <div className="max-h-[600px] max-w-[600px] overflow-hidden">
               <Image
                 src={HOST + "/uploads/" + currentImage}
                 alt="Gig"
-                height={1000}
-                width={1000}
-                className="hover:scale-110 transition-all duration-500"
+                height={600}
+                width={600}
+                className="transition-all duration-500"
               />
             </div>
             <div className="flex gap-4 flex-wrap">
@@ -93,9 +93,9 @@ function Details() {
                     width={100}
                     key={image}
                     onClick={() => setCurrentImage(image)}
-                    className={`${
-                      currentImage === image ? "" : "blur-sm"
-                    } cursor-pointer transition-all duration-500`}
+                    className={`cursor-pointer transition-all duration-500 ${
+                      currentImage === image ? "border-2 border-yellow-400" : ""
+                    }`}
                   />
                 ))}
             </div>

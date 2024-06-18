@@ -2,8 +2,6 @@ import { useCookies } from "react-cookie";
 import { LOGIN_ROUTE, SIGNUP_ROUTE } from "../utils/constants";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { MdFacebook } from "react-icons/md";
 import { useRouter } from "next/router";
 import { useStateProvider } from "../context/StateContext";
 import { reducerCases } from "../context/constants";
@@ -80,15 +78,14 @@ function AuthWrapper({ type }) {
       ></div>
       <div className="h-[100vh] w-[100vw] flex flex-col justify-center items-center">
         <div
-          className="fixed z-[101] h-max w-max bg-white flex flex-col justify-center items-center"
+          className="fixed z-[101] h-max w-max bg-white flex flex-col justify-center items-center rounded-lg shadow-lg"
           id="auth-modal"
         >
           <div className="flex flex-col justify-center items-center p-8 gap-7">
             <h3 className="text-2xl font-semibold text-slate-700">
-              {type === "login" ? "Login" : "Sign"}
-              in to Skill Link
+              {type === "login" ? "Login" : "Sign"} in to Skill Link
             </h3>
-            <div className="relative  w-full text-center">
+            <div className="relative w-full text-center">
               <span className="before:content-[''] before:h-[0.5px] before:w-80 before:absolute before:top-[50%] before:left-0 before:bg-slate-400">
                 <span className="bg-white relative z-10 px-2">OR</span>
               </span>
@@ -98,18 +95,18 @@ function AuthWrapper({ type }) {
                 type="text"
                 name="email"
                 placeholder="Email / Username"
-                className="border border-slate-300 p-3 w-80"
+                className="border border-slate-300 p-3 w-80 rounded-md focus:ring-2 focus:ring-purple-600"
                 onChange={handleChange}
               />
               <input
                 type="password"
                 placeholder="Password"
-                className="border border-slate-300 p-3 w-80"
+                className="border border-slate-300 p-3 w-80 rounded-md focus:ring-2 focus:ring-purple-600"
                 name="password"
                 onChange={handleChange}
               />
               <button
-                className="bg-[#1DBF73] text-white px-12 text-lg font-semibold rounded-r-md p-3 w-80"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-12 text-lg font-semibold rounded-md p-3 w-80 transition-all duration-300 transform hover:scale-105"
                 onClick={handleClick}
                 type="button"
               >
@@ -118,13 +115,12 @@ function AuthWrapper({ type }) {
             </div>
           </div>
           <div className="py-5 w-full flex items-center justify-center border-t border-slate-400">
-            <span className="text-sm  text-slate-700">
-              {" "}
+            <span className="text-sm text-slate-700">
               {type === "login" ? (
                 <>
                   Not a member yet?&nbsp;
                   <span
-                    className="text-[#1DBF73] cursor-pointer"
+                    className="text-purple-600 cursor-pointer"
                     onClick={() => {
                       dispatch({
                         type: reducerCases.TOGGLE_SIGNUP_MODAL,
@@ -143,7 +139,7 @@ function AuthWrapper({ type }) {
                 <>
                   Already a member?&nbsp;
                   <span
-                    className="text-[#1DBF73] cursor-pointer"
+                    className="text-purple-600 cursor-pointer"
                     onClick={() => {
                       dispatch({
                         type: reducerCases.TOGGLE_SIGNUP_MODAL,

@@ -176,6 +176,52 @@ export const editGig = async (req, res, next) => {
   }
 };
 
+export const deleteGig = async (req, res, next) => {
+  try {
+    const { gigId } = req.params;
+    const prisma = new PrismaClient();
+
+    // Find the gig to be deleted
+    const gig = await prisma.gigs.findUnique({
+      where: { id: parseInt(gigId) },
+      include: {
+        createdBy: true,
+        images: true,
+      },
+    });
+
+    if (!gig) {
+      return res.status(404).send("Gig not found.");
+    }
+
+    // Ensure the user deleting the gig is the creator
+    if (gig.createdBy.id !== req.userId) {
+      return res
+        .status(403)
+        .send("You do not have permission to delete this gig.");
+    }
+
+    // Delete associated images
+    gig.images.forEach((image) => {
+      if (existsSync(`uploads/${image}`)) {
+        unlinkSync(`uploads/${image}`);
+      }
+    });
+
+    // Delete the gig from the database
+    await prisma.gigs.delete({
+      where: { id: parseInt(gigId) },
+    });
+
+    return res.status(200).send("Successfully deleted the gig.");
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send("Internal Server Error");
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
 export const searchGigs = async (req, res, next) => {
   try {
     if (req.query.searchTerm || req.query.category) {

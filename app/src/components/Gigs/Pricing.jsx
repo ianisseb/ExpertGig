@@ -50,7 +50,7 @@ function Pricing() {
               </button>
             ) : (
               <button
-                className="flex items-center bg-[#1DBF73] text-white py-2 justify-center font-bold text-lg relative rounded"
+                className="flex items-center bg-[#A020F0] text-white py-2 justify-center font-bold text-lg relative rounded"
                 onClick={() => router.push(`/checkout?gigId=${gigData.id}`)}
               >
                 <span>Continue</span>
@@ -59,11 +59,7 @@ function Pricing() {
             )}
           </div>
           {gigData.userId !== userInfo.id && (
-            <div className="flex items-center justify-center mt-5">
-              <button className=" w-5/6 hover:bg-[#74767e] py-1 border border-[#74767e] px-5 text-[#6c6d75] hover:text-white transition-all duration-300 text-lg rounded font-bold">
-                Contact Me
-              </button>
-            </div>
+            <div className="flex items-center justify-center mt-5"></div>
           )}
         </div>
       )}

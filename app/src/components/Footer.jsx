@@ -1,12 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import {
-  FiGithub,
-  FiInstagram,
-  FiYoutube,
-  FiLinkedin,
-  FiTwitter,
-} from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
 import SkillLinkLogo from "./SkillLinkLogo";
 import { categories } from "../utils/categories";
 
@@ -63,21 +57,6 @@ function Footer() {
         { name: "Invite a Friend", link: "#" },
         { name: "Become a Seller", link: "#" },
         { name: "Community Standards", link: "#" },
-      ],
-    },
-    {
-      headerName: "Move From Fiverr",
-      links: [
-        { name: "Fiverr Business", link: "#" },
-        { name: "Fiverr Pro", link: "#" },
-        { name: "Fiverr Logo Maker", link: "#" },
-        { name: "Fiverr Guides", link: "#" },
-        { name: "Get Inspired", link: "#" },
-        { name: "Fiverr Select", link: "#" },
-        { name: "ClearVoice", link: "#" },
-        { name: "Fiverr Workspace", link: "#" },
-        { name: "Learn", link: "#" },
-        { name: "Working Not Working", link: "#" },
       ],
     },
   ];

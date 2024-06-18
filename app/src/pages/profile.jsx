@@ -1,11 +1,6 @@
 import { useStateProvider } from "../context/StateContext";
 import { reducerCases } from "../context/constants";
-import {
-  HOST,
-  IMAGES_URL,
-  SET_USER_IMAGE,
-  SET_USER_INFO,
-} from "../utils/constants";
+import { HOST, SET_USER_IMAGE, SET_USER_INFO } from "../utils/constants";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -103,30 +98,25 @@ function Profile() {
   };
 
   const inputClassName =
-    "block p-4 w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  focus:ring-blue-500 focus:border-blue-500";
+    "block p-4 w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500";
   const labelClassName =
-    "mb-2 text-lg font-medium text-gray-900  dark:text-white";
+    "mb-2 text-lg font-medium text-gray-900 dark:text-white";
   return (
     <>
       {isLoaded && (
-        <div className="flex flex-col items-center justify-start min-h-[80vh] gap-3">
-          {errorMessage && (
-            <div>
-              <span className="text-red-600 font-bold">{errorMessage}</span>
-            </div>
-          )}
-          <h2 className="text-3xl">Welocme to Fiverr Clone</h2>
-          <h4 className="text-xl">
+        <div className="flex flex-col items-center justify-start min-h-[80vh] gap-5 p-10 bg-gray-50">
+          <h2 className="text-4xl font-bold mb-2">Welcome to Skill Link</h2>
+          <h4 className="text-2xl mb-6">
             Please complete your profile to get started
           </h4>
-          <div className="flex flex-col items-center w-full gap-5">
+          <div className="flex flex-col items-center w-full gap-6">
             <div
               className="flex flex-col items-center cursor-pointer"
               onMouseEnter={() => setImageHover(true)}
               onMouseLeave={() => setImageHover(false)}
             >
               <label className={labelClassName} htmlFor="">
-                Select a profile Picture
+                Select a Profile Picture
               </label>
               <div className="bg-purple-500 h-36 w-36 flex items-center justify-center rounded-full relative">
                 {image ? (
@@ -142,13 +132,11 @@ function Profile() {
                   </span>
                 )}
                 <div
-                  className={`absolute bg-slate-400 h-full w-full rounded-full flex items-center justify-center   transition-all duration-100  ${
+                  className={`absolute bg-slate-400 h-full w-full rounded-full flex items-center justify-center transition-all duration-100 ${
                     imageHover ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <span
-                    className={` flex items-center justify-center  relative`}
-                  >
+                  <span className="flex items-center justify-center relative">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-12 h-12 text-white absolute"
@@ -164,7 +152,7 @@ function Profile() {
                     <input
                       type="file"
                       onChange={handleFile}
-                      className="opacity-0"
+                      className="opacity-0 cursor-pointer"
                       multiple={true}
                       name="profileImage"
                     />
@@ -172,8 +160,8 @@ function Profile() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-4 w-[500px]">
-              <div>
+            <div className="flex flex-col w-[500px] gap-4">
+              <div className="flex flex-col">
                 <label className={labelClassName} htmlFor="userName">
                   Please select a username
                 </label>
@@ -186,11 +174,14 @@ function Profile() {
                   value={data.userName}
                   onChange={handleChange}
                 />
+                <p className="text-sm text-gray-500 mt-1">
+                  Choose a unique username for your profile.
+                </p>
               </div>
 
-              <div>
+              <div className="flex flex-col">
                 <label className={labelClassName} htmlFor="fullName">
-                  Please enter your full Name
+                  Please enter your full name
                 </label>
                 <input
                   className={inputClassName}
@@ -201,28 +192,40 @@ function Profile() {
                   value={data.fullName}
                   onChange={handleChange}
                 />
+                <p className="text-sm text-gray-500 mt-1">
+                  This is the name that will appear on your profile.
+                </p>
+              </div>
+
+              <div className="flex flex-col">
+                <label className={labelClassName} htmlFor="description">
+                  Description
+                </label>
+                <textarea
+                  name="description"
+                  id="description"
+                  value={data.description}
+                  onChange={handleChange}
+                  className={inputClassName}
+                  placeholder="Description"
+                ></textarea>
+                <p className="text-sm text-gray-500 mt-1">
+                  Provide a brief description about yourself.
+                </p>
               </div>
             </div>
-            <div className="flex flex-col w-[500px]">
-              <label className={labelClassName} htmlFor="description">
-                Description
-              </label>
-              <textarea
-                name="description"
-                id="description"
-                value={data.description}
-                onChange={handleChange}
-                className={inputClassName}
-                placeholder="description"
-              ></textarea>
-            </div>
             <button
-              className="border   text-lg font-semibold px-5 py-3   border-[#1DBF73] bg-[#1DBF73] text-white rounded-md"
+              className="border text-lg font-semibold px-5 py-3 bg-[#A020F0] text-white rounded-md hover:bg-[#A020F0] transition-all duration-300"
               type="button"
               onClick={setProfile}
             >
               Set Profile
             </button>
+            {errorMessage && (
+              <div className="mt-4">
+                <span className="text-red-600 font-bold">{errorMessage}</span>
+              </div>
+            )}
           </div>
         </div>
       )}

@@ -10,8 +10,8 @@ function CreateGigs() {
   const [cookies] = useCookies();
   const router = useRouter();
   const inputClassName =
-    "block p-4 w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  focus:ring-blue-500 focus:border-blue-500";
-  const labelClassName = "mb-2 text-lg font-medium text-gray-900  ";
+    "block p-4 w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-green-500";
+  const labelClassName = "mb-2 text-lg font-medium text-gray-900";
   const [files, setFile] = useState([]);
   const [features, setfeatures] = useState([]);
   const [data, setData] = useState({
@@ -80,13 +80,15 @@ function CreateGigs() {
     }
   };
   return (
-    <div className="min-h-[80vh] my-10 mt-0 px-32 ">
-      <h1 className="text-6xl text-gray-900 mb-5">Create a new Gig</h1>
-      <h3 className="text-3xl text-gray-900 mb-5">
+    <div className="min-h-screen py-12 px-6 md:px-32 bg-gray-100">
+      <h1 className="text-4xl md:text-6xl text-gray-900 font-bold mb-5">
+        Create a new Gig
+      </h1>
+      <h3 className="text-2xl md:text-3xl text-gray-700 mb-8">
         Enter the details to create the gig
       </h3>
-      <form action="" className="flex flex-col gap-5 mt-10">
-        <div className="grid grid-cols-2 gap-11">
+      <form action="" className="flex flex-col gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="title" className={labelClassName}>
               Gig Title
@@ -108,11 +110,14 @@ function CreateGigs() {
             </label>
             <select
               id="categories"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+              className={inputClassName}
               name="category"
               onChange={handleChange}
-              defaultValue="Choose a Category"
+              defaultValue=""
             >
+              <option value="" disabled>
+                Choose a Category
+              </option>
               {categories.map(({ name }) => (
                 <option key={name} value={name}>
                   {name}
@@ -127,16 +132,18 @@ function CreateGigs() {
           </label>
           <textarea
             id="description"
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+            className="block p-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
             placeholder="Write a short description"
             name="description"
             value={data.description}
             onChange={handleChange}
           ></textarea>
         </div>
-        <div className="grid grid-cols-2 gap-11">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="delivery">Delivery Time</label>
+            <label htmlFor="delivery" className={labelClassName}>
+              Delivery Time (days)
+            </label>
             <input
               type="number"
               className={inputClassName}
@@ -162,7 +169,7 @@ function CreateGigs() {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-11">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="features" className={labelClassName}>
               Features
@@ -179,7 +186,7 @@ function CreateGigs() {
               />
               <button
                 type="button"
-                className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800  font-medium  text-lg px-10 py-3 rounded-md "
+                className="focus:outline-none text-white bg-purple-600 hover:bg-purple-700 font-medium text-lg px-5 py-3 rounded-md"
                 onClick={addFeature}
               >
                 Add
@@ -190,11 +197,11 @@ function CreateGigs() {
                 return (
                   <li
                     key={feature + index.toString()}
-                    className="flex gap-2 items-center py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 cursor-pointer hover:border-red-200"
+                    className="flex gap-2 items-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 cursor-pointer hover:border-red-200"
                   >
                     <span>{feature}</span>
                     <span
-                      className="text-red-700"
+                      className="text-red-700 cursor-pointer"
                       onClick={() => removeFeature(index)}
                     >
                       X
@@ -213,16 +220,16 @@ function CreateGigs() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-11">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="shortDesc" className={labelClassName}>
               Short Description
             </label>
             <input
               type="text"
-              className={`${inputClassName} w-1/5`}
+              className={inputClassName}
               id="shortDesc"
-              placeholder="Enter a short description."
+              placeholder="Enter a short description"
               name="shortDesc"
               value={data.shortDesc}
               onChange={handleChange}
@@ -234,7 +241,7 @@ function CreateGigs() {
             </label>
             <input
               type="number"
-              className={`${inputClassName} w-1/5`}
+              className={inputClassName}
               id="price"
               placeholder="Enter a price"
               name="price"
@@ -245,7 +252,7 @@ function CreateGigs() {
         </div>
         <div>
           <button
-            className="border   text-lg font-semibold px-5 py-3   border-[#1DBF73] bg-[#1DBF73] text-white rounded-md"
+            className="text-lg font-semibold px-5 py-3 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none"
             type="button"
             onClick={addGig}
           >

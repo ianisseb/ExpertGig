@@ -31,17 +31,6 @@ function Search() {
               Results for <strong>{q}</strong>
             </h3>
           )}
-          <div className="flex gap-4">
-            <button className="py-3 px-5 border border-gray-400 rounded-lg font-medium">
-              Category
-            </button>
-            <button className="py-3 px-5 border border-gray-400 rounded-lg font-medium">
-              Budget
-            </button>
-            <button className="py-3 px-5 border border-gray-400 rounded-lg font-medium">
-              Delivery Time
-            </button>
-          </div>
           <div>
             <div className="my-4">
               <span className="text-[#74767e] font-medium ">
