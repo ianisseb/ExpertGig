@@ -58,9 +58,6 @@ function Index() {
               <th scope="col" className="px-6 py-3">
                 <span className="sr-only">Edit</span>
               </th>
-              <th scope="col" className="px-6 py-3">
-                <span className="sr-only">Delete</span>
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -83,14 +80,6 @@ function Index() {
                     >
                       Edit
                     </Link>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <button
-                      onClick={() => handleDelete(id)}
-                      className="font-medium text-red-600 hover:underline"
-                    >
-                      Delete
-                    </button>
                   </td>
                 </tr>
               );

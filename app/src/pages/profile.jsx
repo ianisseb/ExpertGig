@@ -99,8 +99,7 @@ function Profile() {
 
   const inputClassName =
     "block p-4 w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500";
-  const labelClassName =
-    "mb-2 text-lg font-medium text-gray-900 dark:text-white";
+  const labelClassName = "mb-2 text-lg font-medium text-gray-950";
   return (
     <>
       {isLoaded && (
@@ -174,7 +173,7 @@ function Profile() {
                   value={data.userName}
                   onChange={handleChange}
                 />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-950 mt-1">
                   Choose a unique username for your profile.
                 </p>
               </div>
@@ -192,7 +191,7 @@ function Profile() {
                   value={data.fullName}
                   onChange={handleChange}
                 />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-950 mt-1">
                   This is the name that will appear on your profile.
                 </p>
               </div>
@@ -209,7 +208,7 @@ function Profile() {
                   className={inputClassName}
                   placeholder="Description"
                 ></textarea>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-950 mt-1">
                   Provide a brief description about yourself.
                 </p>
               </div>
